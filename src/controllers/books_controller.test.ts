@@ -108,7 +108,12 @@ describe("GET /api/v1/books/{bookId} endpoint", () => {
 });
 
 describe("POST /api/v1/books endpoint", () => {
+	beforeEach(() => {
+		jest.clearAllMocks();
+	});
 	test("status code successfully 201 for saving a valid book", async () => {
+		jest.spyOn(bookService, "getBook").mockResolvedValue(null);
+
 		// Act
 		const res = await request(app)
 			.post("/api/v1/books")
