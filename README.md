@@ -65,3 +65,5 @@ to add in exception handling to the project?
 
 -   Clue 2: What if someone wants to find a book by an ID that doesn't yet exist?
     How can we improve the API by handling errors gracefully and show a helpful message to the client?
+
+ "C:\Program Files\PostgreSQL\15\bin\pg_ctl" -D "C:\Program Files\PostgreSQL\15\data" start
