@@ -21,7 +21,7 @@ import * as dotenv from "dotenv";
 // }
 dotenv.config();
 
-const connString = "postgres://postgres:322551Vfve!@127.0.0.1:5432/bookshop";
-// const connString = `postgres://${process.env.PORT}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
+// const connString = "postgres://postgres:322551Vfve!@127.0.0.1:5432/bookshop";
+const connString = `postgres://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
 
 export const sequelize = new Sequelize(connString);

@@ -67,3 +67,4 @@ to add in exception handling to the project?
     How can we improve the API by handling errors gracefully and show a helpful message to the client?
 
  "C:\Program Files\PostgreSQL\15\bin\pg_ctl" -D "C:\Program Files\PostgreSQL\15\data" start
+netstat -ano | findstr :3000
