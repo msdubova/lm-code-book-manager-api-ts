@@ -5,7 +5,7 @@
 	"scripts": {
 		"start": "nodemon src/server.ts",
 		"test": "jest --watch",
-		"start-prod": "SET NODE_ENV=production& nodemon src/server.ts"
+		"start-prod": "NODE_ENV=production nodemon src/server.ts"
 	},
 	"repository": {
 		"type": "git",
