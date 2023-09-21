@@ -17,7 +17,6 @@ export const getBook = async (req: Request, res: Response) => {
 	}
 };
 
-
 export const saveBook = async (req: Request, res: Response) => {
 	const bookToBeSaved = req.body;
 	const bookId: number = Number.parseInt(bookToBeSaved.bookId);
@@ -39,8 +38,6 @@ export const saveBook = async (req: Request, res: Response) => {
 	}
 };
 
-
-
 // User Story 4 - Update Book By Id Solution
 
 export const updateBook = async (req: Request, res: Response) => {
@@ -61,20 +58,15 @@ export const updateBook = async (req: Request, res: Response) => {
 	}
 };
 
-
-
 export const deleteBook = async (req: Request, res: Response) => {
-	const bookId = Number.parseInt(req.params.bookId);
+	const bookId = req.params.bookId;
+	const existingBook = await bookService.getBook(Number(bookId));
 
-	try {
-		const existingBook = await bookService.getBook(bookId);
-		if (!existingBook) {
-			res.status(404).json({ message: `Book with ID ${bookId} is not found` });
-		} else {
-			await bookService.deleteBook(bookId);
-			res.status(200).json({ message: `Book with ID ${bookId} is removed succesfully` });
-		}
-	} catch (error) {
-		res.status(400).json({ message: (error as Error).message });
+	if (existingBook) {
+		res
+			.json({ message: `Book with ID ${bookId} is removed succesfully` })
+			.status(200);
+	} else {
+		res.status(404).json({ message: `Book with ID ${bookId} is not found` });
 	}
 };

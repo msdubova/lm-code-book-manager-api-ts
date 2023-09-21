@@ -138,3 +138,45 @@ describe("POST /api/v1/books endpoint", () => {
 		expect(res.statusCode).toEqual(400);
 	});
 });
+
+describe("DELETE /api/v1/books/{bookId} endpoint", () => {
+	// test("status code is 200 when a book is deleted successfully", async () => {
+	// 	const bookId = 1;
+	// 	jest.spyOn(bookService, "deleteBook").mockResolvedValue(1);
+
+	// 	const res = await request(app).delete(`/api/v1/books/${bookId}`);
+
+	// 	// expect(res.statusCode).toEqual(200);
+	// 	expect(res.body).toEqual({ message: `Book with ID ${bookId} is removed successfully` });
+	// });
+
+	test("status code is 200 when a book is deleted successfully", async () => {
+    const bookId = 1;
+    jest.spyOn(bookService, "deleteBook").mockImplementation(async (id) => {
+
+        if (id === 1) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+
+    const res = await request(app).delete(`/api/v1/books/${bookId}`);
+
+    expect(res.statusCode).toEqual(200);
+    expect(res.body).toEqual({ message: `Book with ID ${bookId} is removed successfully` });
+});
+
+
+	test("status code is 404 when a book with the given ID does not exist", async () => {
+
+		const bookId = 456;
+		jest.spyOn(bookService, "deleteBook").mockResolvedValue(0);
+
+		const res = await request(app).delete(`/api/v1/books/${bookId}`);
+
+		expect(res.statusCode).toEqual(404);
+		expect(res.body).toEqual({ message: `Book with ID ${bookId} is not found` });
+	});
+
+});

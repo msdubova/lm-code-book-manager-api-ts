@@ -30,3 +30,4 @@ export const deleteBook = async (bookId: number) => {
 		}
 	})
 }
+
