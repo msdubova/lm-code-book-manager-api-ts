@@ -60,11 +60,11 @@ export const updateBook = async (req: Request, res: Response) => {
 
 export const deleteBook = async (req: Request, res: Response) => {
 	const bookId = req.params.bookId;
-	const existingBook = await bookService.getBook(Number(bookId));
+	const existingBook = await bookService.deleteBook(Number(bookId));
 
 	if (existingBook) {
 		res
-			.json({ message: `Book with ID ${bookId} is removed succesfully` })
+			.json({ message: `Book with ID ${bookId} is removed successfully` })
 			.status(200);
 	} else {
 		res.status(404).json({ message: `Book with ID ${bookId} is not found` });

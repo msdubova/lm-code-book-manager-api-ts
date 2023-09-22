@@ -4,7 +4,7 @@
 	"description": "A repository used to demonstrate API creation using NodeJS",
 	"scripts": {
 		"start": "nodemon src/server.ts",
-		"test": "set NODE_ENV=test &jest --watch",
+		"test": "set NODE_ENV=test & jest --watch",
 		"start-prod": "set NODE_ENV=production & nodemon src/server.ts"
 
 	},
